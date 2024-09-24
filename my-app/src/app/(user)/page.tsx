@@ -1,10 +1,18 @@
 import Banner from "@/components/Banner"
+import { client } from "@/lib/sanityClient";
+import { groq } from "next-sanity"; 
 
-const HomePage = () => {
+const bannerQuery = groq`*[_type == "banner"]{
+    image,
+    _id,
+} | order(_createdAt asc)`;
+
+const HomePage = async() => {
+    const banners = await client.fetch(bannerQuery)
     return (
-        <div>
-            <Banner />
-        </div>
+        <main className="text-sm overflow-hidden min-h-screen">
+            <Banner banners={banners} />
+        </main>
     )
 }
 
