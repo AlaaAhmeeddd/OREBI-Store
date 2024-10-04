@@ -46,7 +46,7 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                     )}
                 </div>
             </div>
-            <div className="max-w-80 py-6 flex flex-col gap-1 px-4">
+            <div className="py-6 flex flex-col gap-1 px-4">
                 <div className="flex items-center justify-between">
                 <h2 className="text-lg text-primeColor font-bold">
                     {product?.title.substring(0, 15)}
