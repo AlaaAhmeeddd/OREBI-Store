@@ -3,8 +3,6 @@ import NewArrival from "@/components/NewArrival";
 import { client } from "@/lib/sanityClient";
 import { groq } from "next-sanity"; 
 
-export const relativedata = 10
-
 export const dynamic = "force-dynamic";
 
 const bannerQuery = groq`*[_type == "banner"]{
