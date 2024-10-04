@@ -43,7 +43,7 @@ const NewArrival = ({arrivals}: products) => {
         ]
     };
     return (
-        <Container className="-mt-48 z-[20] relative">
+        <Container className="lg:-mt-48 -mt-[100px] z-[20] relative">
             <Slider {...settings}>
                 {arrivals?.map((item)=>(
                     <div key={item._id} className="px-2">
