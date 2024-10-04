@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner"
+import HomeBanner from "@/components/HomeBanner";
 import NewArrival from "@/components/NewArrival";
 import { client } from "@/lib/sanityClient";
 import { groq } from "next-sanity"; 
@@ -21,6 +22,7 @@ const HomePage = async() => {
         <main className="text-sm overflow-hidden min-h-screen">
             <Banner banners={banners} />
             <NewArrival arrivals={newProducts} />
+            <HomeBanner />
         </main>
     )
 }
