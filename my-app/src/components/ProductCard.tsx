@@ -20,22 +20,22 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                             className="w-72 h-72 object-contain"
                         />
                     </Link>
-                    <div className="absolute bottom-0 flex items-center gap-3 justify-center translate-y-[150%] 
-                    group-hover:translate-y-0 transition-transform duration-300">  
-                        <Button>
-                            <Link href={"/"} className="bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full
-                            flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200">
+                    <div className="absolute bottom-0 flex lg:flex-row flex-col items-center lg:gap-3 gap-1.5 lg:justify-center  
+                        translate-y-[150%] group-hover:translate-y-0 transition-transform duration-300 w-full">  
+                        <Link href={"/"} className="bg-gray-800 text-gray-200 rounded-full
+                            hover:bg-gray-950 hover:text-white duration-200">
+                            <Button className="flex items-center justify-center text-xs gap-1">
                                 <span> <AiOutlineShopping /> </span>
                                 Add to bag
-                            </Link>
-                        </Button>
-                        <Button>
-                            <Link href={"/"} className="bg-gray-800 text-gray-200 px-4 py-2 text-xs rounded-full
-                            flex items-center gap-1 hover:bg-gray-950 hover:text-white duration-200">
+                            </Button>
+                        </Link>
+                        <Link href={"/"} className="bg-gray-800 text-gray-200 rounded-full
+                            hover:bg-gray-950 hover:text-white duration-200">
+                            <Button className="flex items-center justify-center gap-1 text-xs ">
                                 <span> <BsArrowsFullscreen /> </span>
                                 Quick view
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </div>
                     {product?.isnew && (
                         <div className="absolute top-2 right-2 z-50">

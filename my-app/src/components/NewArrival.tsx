@@ -28,18 +28,11 @@ const NewArrival = ({arrivals}: products) => {
             {
                 breakpoint: 769,
                 settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToShow: 1,
+                slidesToScroll: 1,
                 infinite: true,
                 }
             },
-            {
-                breakpoint: 480,
-                settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-                }
-            }
         ]
     };
     return (
