@@ -9,8 +9,8 @@ import { MdOutlineStarPurple500 } from "react-icons/md"
 
 const ProductCard = ({product}: {product: ProductProps}) => {
     return (
-        <div className="w-full relative group border-[1px] border-black hover:shadow-lg duration-200 
-            shadow-gray-500 overflow-hidden">
+        <div className="w-full relative group border-[1px] border-gray-300 hover:shadow-lg duration-200 
+            shadow-gray-500 overflow-hidden rounded-md">
             <div className="w-full h-80 flex items-center justify-center bg-white overflow-hidden">
                 <div className="relative">
                     <Link href="/">

@@ -35,7 +35,8 @@ export interface ProductProps {
 }
 
 export interface products{
-    arrivals: ProductProps[]
+    products: ProductProps[],
+    title?: string,
 }
 
 export interface StateProps {

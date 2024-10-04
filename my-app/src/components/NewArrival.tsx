@@ -7,7 +7,7 @@ import { products } from "@/type";
 import NextBtn from "./NextBtn";
 import PreviousBtn from "./PreviousBtn";
 
-const NewArrival = ({arrivals}: products) => {
+const NewArrival = ({products}: products) => {
     const settings = {
         infinite: true,
         speed: 500,
@@ -38,7 +38,7 @@ const NewArrival = ({arrivals}: products) => {
     return (
         <Container className="lg:-mt-48 -mt-[100px] z-[20] relative">
             <Slider {...settings}>
-                {arrivals?.map((item)=>(
+                {products?.map((item)=>(
                     <div key={item._id} className="px-2">
                         <ProductCard product={item} />
                     </div>
