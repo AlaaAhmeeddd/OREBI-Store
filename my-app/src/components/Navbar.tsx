@@ -15,7 +15,7 @@ const Navbar = () => {
     const pathName = usePathname()
     return (
         <header className="w-full h-20 bg-white border-b border-b-gray-400 sticky top-0 z-50">
-            <nav className="h-full flex items-center gap-3 mx-auto xl:px-0 px-4 justify-between max-w-screen-xl">
+            <nav className="h-full flex items-center gap-3 mx-auto px-4 justify-between max-w-screen-xl">
                 <Link href="/" className="min-w-20 max-w-56">
                     <Image src={logo} alt="logo" className="w-full" />
                 </Link>
