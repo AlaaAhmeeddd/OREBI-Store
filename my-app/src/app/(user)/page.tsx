@@ -2,6 +2,7 @@ import Banner from "@/components/Banner"
 import BestSellers from "@/components/BestSellers";
 import HomeBanner from "@/components/HomeBanner";
 import NewArrival from "@/components/NewArrival";
+import SpecialOffer from "@/components/SpecialOffer";
 import YearProduct from "@/components/YearProduct";
 import { client } from "@/lib/sanityClient";
 import { groq } from "next-sanity"; 
@@ -38,6 +39,7 @@ const HomePage = async() => {
             <HomeBanner />
             <BestSellers products={bestSellersProducts} title="Our Bestsellers" />
             <YearProduct />
+            <SpecialOffer products={specialOffersProducts} title="Special Offers"  />
         </main>
     )
 }
