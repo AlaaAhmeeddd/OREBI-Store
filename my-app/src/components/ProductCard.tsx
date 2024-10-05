@@ -8,6 +8,8 @@ import { BsArrowsFullscreen } from "react-icons/bs"
 import { MdOutlineStarPurple500 } from "react-icons/md"
 
 const ProductCard = ({product}: {product: ProductProps}) => {
+
+    console.log(product?.slug?.current)
     return (
         <div className="w-full relative group border-[1px] border-gray-300 hover:shadow-lg duration-200 
             shadow-gray-500 overflow-hidden rounded-md">
@@ -21,7 +23,7 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                         />
                     </Link>
                     <div className="absolute bottom-0 flex lg:flex-row flex-col items-center lg:gap-3 gap-1.5 lg:justify-center  
-                        translate-y-[150%] group-hover:translate-y-0 transition-transform duration-300 w-full">  
+                        translate-y-[160%] group-hover:translate-y-0 transition-transform duration-300 w-full">  
                         <Link href={"/"} className="bg-gray-800 text-gray-200 rounded-full
                             hover:bg-gray-950 hover:text-white duration-200">
                             <Button className="flex items-center justify-center text-xs gap-1">
@@ -29,7 +31,7 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                                 Add to bag
                             </Button>
                         </Link>
-                        <Link href={"/"} className="bg-gray-800 text-gray-200 rounded-full
+                        <Link href={`product/${product?.slug?.current}`} className="bg-gray-800 text-gray-200 rounded-full
                             hover:bg-gray-950 hover:text-white duration-200">
                             <Button className="flex items-center justify-center gap-1 text-xs ">
                                 <span> <BsArrowsFullscreen /> </span>
