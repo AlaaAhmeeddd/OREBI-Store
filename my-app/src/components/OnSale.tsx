@@ -12,7 +12,7 @@ const OnSale = (products: products) => {
             </h3>
             <div className="flex flex-col gap-2 justify-start">
                 {products?.products.map((item)=>(
-                    <Link key={item._id} href={`product/${item?.slug?.current}`} 
+                    <Link key={item._id} href={`/product/${item?.slug?.current}`} 
                     className="flex items-center gap-4 border-b-[1px] border-b-gray-300">
                         <Image 
                             src={urlFor(item?.image).url()} 

@@ -1,7 +1,9 @@
 import Container from "@/components/Container"
 import OnSale from "@/components/OnSale"
-import { client } from "@/lib/sanityClient"
+import ProudctInfo from "@/components/ProductInfo"
+import { client, urlFor } from "@/lib/sanityClient"
 import { groq } from "next-sanity"
+import Image from "next/image"
 
 const page = async({params}: {params:{productSlug: string}}) => {
 
@@ -17,8 +19,18 @@ const page = async({params}: {params:{productSlug: string}}) => {
                 <div className="">
                     <OnSale products={onSaleProducts} />
                 </div>
-                <div></div>
-                <div></div>
+                <div className="h-full xl:col-span-2">
+                    <Image
+                        src={urlFor(product?.image).url()}
+                        alt="product image"
+                        className="w-full h-full object-contain"
+                        width={500}
+                        height={500}
+                    />
+                </div>
+                <div className="w-full md:col-span-2 xl:col-span-3 xl:p-14 flex flex-col gap-6 justify-center">
+                    <ProudctInfo product={product} />
+                </div>
             </div>
         </Container>
     )
