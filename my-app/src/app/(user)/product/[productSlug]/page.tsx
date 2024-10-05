@@ -1,8 +1,9 @@
 import Container from "@/components/Container"
 import OnSale from "@/components/OnSale"
 import ProudctInfo from "@/components/ProductInfo"
+import { RichText } from "@/components/RichText"
 import { client, urlFor } from "@/lib/sanityClient"
-import { groq } from "next-sanity"
+import { groq, PortableText } from "next-sanity"
 import Image from "next/image"
 
 const page = async({params}: {params:{productSlug: string}}) => {
@@ -32,6 +33,7 @@ const page = async({params}: {params:{productSlug: string}}) => {
                     <ProudctInfo product={product} />
                 </div>
             </div>
+            <PortableText value={product?.body} components={RichText} />
         </Container>
     )
 }
