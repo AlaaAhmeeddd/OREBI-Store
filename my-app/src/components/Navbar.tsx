@@ -9,20 +9,23 @@ import { useState } from "react";
 import { navLinks } from "@/constants"
 import { usePathname } from "next/navigation"
 import MobileNavlinks from "./MobileNavlinks"
+import useMediaQuery from "@mui/material/useMediaQuery"
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const pathName = usePathname()
+    const isSmallScreen = useMediaQuery('(max-width: 400px)');
+
     return (
         <header className="w-full h-20 bg-white border-b border-b-gray-400 sticky top-0 z-[1000]">
             <nav className="h-full flex items-center gap-3 mx-auto md:px-12 px-6 justify-between max-w-screen-xl">
                 <Link href="/" className="min-w-20 max-w-56">
                     <Image src={logo} alt="logo" className="w-full" />
                 </Link>
-                <div className="relative ml-4 hidden lg:inline-flex items-center w-full lg:w-[600px] text-base text-primeColor">
+                <div className={`relative md:ml-4 items-center inline-flex lg:w-[600px] text-base text-primeColor`}>
                     <Input 
-                        className="flex-1 h-full outline-none"
-                        placeholder="Search your products here.."
+                        className={`flex-1 h-full outline-none ${isSmallScreen ? "w-[150px]" : "w-auto"}`}
+                        placeholder="Search.."
                         onChange={(e)=>setSearchQuery(e.target.value)}
                         value={searchQuery}
                     />
@@ -36,14 +39,16 @@ const Navbar = () => {
                     {navLinks.map((link, index)=>(
                         <Link key={index} 
                             href={link.href} 
-                            className={`underline-offset-4 decoration-[1px] px-8 h-6 font-medium hover:font-semibold duration-150
+                            className={`underline-offset-4 decoration-[1px] lg:px-8 px-3 h-6 font-medium hover:font-semibold duration-150
                             ${pathName == link.href ? "underline text-primeColor": "text-lightText hover:underline "}`}
                         >
                             {link.title}
                         </Link>
                     ))}
                 </div>
-                <MobileNavlinks />
+                <div className="md:hidden inline-block">
+                    <MobileNavlinks />
+                </div>
             </nav>
         </header>
     )
