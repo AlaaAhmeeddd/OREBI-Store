@@ -33,7 +33,8 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                             hover:bg-gray-950 hover:text-white duration-200">
                             <Button 
                                 className="flex items-center justify-center text-xs gap-1"
-                                onClick={()=> {
+                                onClick={(event)=> {
+                                    event.preventDefault(); 
                                     dispatch(addToCard(product)); 
                                     toast.success(`${product?.title.substring(0, 12)}... added to cart`)
                                 }}
