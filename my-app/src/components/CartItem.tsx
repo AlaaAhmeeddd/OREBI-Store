@@ -18,17 +18,17 @@ const CartItem = ({item}: Props) => {
 
     const handleIncrease = ()=>{
         dispatch(increaseQuantity(item))
-        toast("Product added successfully")
+        toast.success("Product added successfully")
     }
 
     const handleDecrease = ()=>{
         dispatch(decreaseQuantity(item))
-        toast("Product reduced successfully")
+        toast.success("Product reduced successfully")
     }
 
     const handleDelete = ()=>{
         dispatch(deleteProduct(item))
-        toast(`${item.title.substring(0, 20)}... deleted successfully`)
+        toast.success(`${item.title.substring(0, 20)}... deleted successfully`)
     }
 
     return (

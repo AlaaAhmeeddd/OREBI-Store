@@ -18,7 +18,7 @@ export const orebiSlice = createSlice({
                 return product?._id === action?.payload?._id 
             })
             if(existingProduct){
-                existingProduct.quantity += action.payload.quantity
+                existingProduct.quantity++
             } else {
                 state.productData.push(action.payload);
             }
