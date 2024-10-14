@@ -9,6 +9,8 @@ import { decreaseQuantity, deleteProduct, increaseQuantity } from "@/redux/orebi
 import toast, { Toaster } from "react-hot-toast";
 import { ImCross } from "react-icons/im";
 
+export const dynamic = "force-dynamic";
+
 interface Props{
     item: ProductProps
 } 

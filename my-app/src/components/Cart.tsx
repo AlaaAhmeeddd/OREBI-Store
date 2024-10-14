@@ -4,10 +4,11 @@ import Container from "./Container"
 import { StateProps } from "@/type";
 import CartItem from "./CartItem";
 
+export const dynamic = "force-dynamic";
+
 const Cart = () => {
 
     const productsData = useSelector((state: StateProps) => state.cartProducts.productData);
-
     return (
         <Container>
             {
