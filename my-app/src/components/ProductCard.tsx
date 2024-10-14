@@ -1,3 +1,4 @@
+"use client"
 import { urlFor } from "@/lib/sanityClient"
 import { ProductProps } from "@/type"
 import Image from "next/image"
@@ -6,10 +7,14 @@ import { Button } from "./ui/button"
 import { AiOutlineShopping } from "react-icons/ai"
 import { BsArrowsFullscreen } from "react-icons/bs"
 import { MdOutlineStarPurple500 } from "react-icons/md"
+import { useDispatch } from "react-redux"
+import { addToCard } from "@/redux/orebiSlice"
+import toast, { Toaster } from "react-hot-toast"
 
 const ProductCard = ({product}: {product: ProductProps}) => {
 
-    console.log(product?.slug?.current)
+    const dispatch = useDispatch()
+
     return (
         <div className="w-full relative group border-[1px] border-gray-300 hover:shadow-lg duration-200 
             shadow-gray-500 overflow-hidden rounded-md">
@@ -26,7 +31,13 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                         translate-y-[160%] group-hover:translate-y-0 transition-transform duration-300 w-full">  
                         <Link href={"/"} className="bg-gray-800 text-gray-200 rounded-full
                             hover:bg-gray-950 hover:text-white duration-200">
-                            <Button className="flex items-center justify-center text-xs gap-1">
+                            <Button 
+                                className="flex items-center justify-center text-xs gap-1"
+                                onClick={()=> {
+                                    dispatch(addToCard(product)); 
+                                    toast.success(`${product?.title.substring(0, 12)}... added to cart`)
+                                }}
+                            >
                                 <span> <AiOutlineShopping /> </span>
                                 Add to bag
                             </Button>
@@ -73,6 +84,15 @@ const ProductCard = ({product}: {product: ProductProps}) => {
                 </div>
                 </div>
             </div>
+            <Toaster 
+                position="bottom-right"
+                toastOptions={{
+                    style: {
+                        background: "#000",
+                        color: "#fff"
+                    }
+                }}
+            />
         </div>
     )
 }

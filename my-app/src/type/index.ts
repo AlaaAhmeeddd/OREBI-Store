@@ -40,7 +40,7 @@ export interface products{
 }
 
 export interface StateProps {
-    orebi: {
+    cartProducts: {
         productData: ProductProps[];
-    };
+    }
 }

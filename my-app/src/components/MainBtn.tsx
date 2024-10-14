@@ -1,8 +1,13 @@
+"use client"
 import { MdAccountCircle } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { StateProps } from "@/type";
 
 const MainBtn = () => {
+    const productState = useSelector((state: StateProps) => state.cartProducts.productData);
+
     return (
         <div className="fixed right-3 top-[50%] -translate-y-[50%] flex flex-col gap-3 z-[1000]">
             <Link href="/profile">
@@ -21,7 +26,9 @@ const MainBtn = () => {
                         <HiShoppingCart className="text-2xl group-hover:translate-x-12 -translate-x-3 transition-transform duration-200" />
                     </div>
                     <p className="text-sm text-center">Buy Now</p>
-                    <p className="rounded-full bg-primeColor text-white text-xs absolute top-1 right-3 w-4 h-4 flex items-center justify-center">3</p>
+                    <p className="rounded-full bg-primeColor text-white text-xs absolute top-1 right-3 w-4 h-4 flex items-center justify-center">
+                        {productState.length}
+                    </p>
                 </div>
             </Link>
         </div>
