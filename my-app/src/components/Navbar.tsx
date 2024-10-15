@@ -10,11 +10,13 @@ import { navLinks } from "@/constants"
 import { usePathname } from "next/navigation"
 import MobileNavlinks from "./MobileNavlinks"
 import useMediaQuery from "@mui/material/useMediaQuery"
+import { signOut, useSession } from "next-auth/react"
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("")
     const pathName = usePathname()
     const isSmallScreen = useMediaQuery('(max-width: 400px)');
+    const {data: session} = useSession()
 
     return (
         <header className="w-full h-20 bg-white border-b border-b-gray-400 sticky top-0 z-[1000]">
@@ -45,6 +47,15 @@ const Navbar = () => {
                             {link.title}
                         </Link>
                     ))}
+                    {session?.user && 
+                        <button 
+                            onClick={() => signOut()}
+                            className="flex hover:font-medium w-20 h-6 justify-center items-center px-12 text-gray-500 
+                            hover:underline underline-offset-4 decoration-[1px] hover:text-red-600 md:border-r-[2px] 
+                            border-r-gray-300 duration-200 last:border-r-0"
+                        >
+                            Logout
+                        </button>}
                 </div>
                 <div className="md:hidden inline-block">
                     <MobileNavlinks />
