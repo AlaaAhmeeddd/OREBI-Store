@@ -11,7 +11,10 @@ const nextConfig = {
             hostname: "lh3.googleusercontent.com",
             pathname: "**"
         }]
-    }
+    },
+    experimental: {
+        middleware: true,
+    },
 };
 
 export default nextConfig;
