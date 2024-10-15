@@ -11,9 +11,11 @@ import { usePathname } from "next/navigation"
 import MobileNavlinks from "./MobileNavlinks"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { signOut, useSession } from "next-auth/react"
+import SearchMenu from "./SearchMenu"
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("")
+    console.log(searchQuery)
     const pathName = usePathname()
     const isSmallScreen = useMediaQuery('(max-width: 400px)');
     const {data: session} = useSession()
@@ -24,18 +26,21 @@ const Navbar = () => {
                 <Link href="/" className="min-w-20 max-w-56">
                     <Image src={logo} alt="logo" className="w-full" />
                 </Link>
-                <div className={`relative md:ml-4 items-center inline-flex lg:w-[600px] text-base text-primeColor`}>
-                    <Input 
-                        className={`flex-1 h-full outline-none ${isSmallScreen ? "w-[150px]" : "w-auto"}`}
-                        placeholder="Search.."
-                        onChange={(e)=>setSearchQuery(e.target.value)}
-                        value={searchQuery}
-                    />
-                    <span className="absolute right-5 text-[19px] hover:cursor-pointer w-5 h-5">
-                        {searchQuery ? 
-                            <IoClose onClick={()=>setSearchQuery("")} className="hover:text-red-500 duration-200" /> 
-                            : <IoSearchSharp />}
-                    </span>
+                <div className="md:relative">
+                    <SearchMenu query={searchQuery} />
+                    <div className={`relative items-center inline-flex lg:w-[600px] text-base text-primeColor`}>
+                        <Input 
+                            className={`flex-1 h-full outline-none ${isSmallScreen ? "w-[150px]" : "w-auto"}`}
+                            placeholder="Search.."
+                            onChange={(e)=>setSearchQuery(e.target.value)}
+                            value={searchQuery}
+                        />
+                        <span className="absolute right-5 text-[19px] hover:cursor-pointer w-5 h-5">
+                            {searchQuery ? 
+                                <IoClose onClick={()=>setSearchQuery("")} className="hover:text-red-500 duration-200" /> 
+                                : <IoSearchSharp />}
+                        </span>
+                    </div>
                 </div>
                 <div className="md:inline-flex hidden items-center divide-x-2 divide-gray-300">
                     {navLinks.map((link, index)=>(

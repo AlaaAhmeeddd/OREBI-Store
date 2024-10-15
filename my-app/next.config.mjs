@@ -12,9 +12,6 @@ const nextConfig = {
             pathname: "**"
         }]
     },
-    experimental: {
-        middleware: true,
-    },
 };
 
 export default nextConfig;

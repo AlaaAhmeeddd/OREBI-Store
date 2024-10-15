@@ -44,3 +44,20 @@ export interface StateProps {
         productData: ProductProps[];
     }
 }
+
+export interface searchProps {
+    _id: string,
+    title: string,
+    price: number,
+    image: {
+        _type: string;
+        asset: {
+            _ref: string;
+            _type: string;
+        };
+    },
+    slug: {
+        current: string;
+        _type: string;
+    };
+}
