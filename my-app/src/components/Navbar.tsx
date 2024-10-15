@@ -55,7 +55,8 @@ const Navbar = () => {
                             border-r-gray-300 duration-200 last:border-r-0"
                         >
                             Logout
-                        </button>}
+                        </button>
+                    }
                 </div>
                 <div className="md:hidden inline-block">
                     <MobileNavlinks />
