@@ -1,7 +1,7 @@
 "use client"
 import { MdAccountCircle } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { StateProps } from "@/type";
@@ -11,6 +11,14 @@ import toast from "react-hot-toast";
 const MainBtn = () => {
     const productState = useSelector((state: StateProps) => state.cartProducts.productData);
     const {data: session} = useSession()
+    const router = useRouter();
+    const handleClick = () => {
+        if (!session?.user) {
+            signIn(); 
+        } else {
+            router.push("/cart");
+        }
+    };
 
     return (
         <div className="fixed right-3 top-[50%] -translate-y-[50%] flex flex-col gap-3 z-[1000]">
@@ -44,7 +52,7 @@ const MainBtn = () => {
                     <p className="text-sm text-center">Profile</p>
                 </div>
             </button>
-            <Link href="/cart">
+            <button onClick={handleClick}>
                 <div className="relative bg-white overflow-x-hidden shadow-textShadow group rounded-md flex flex-col gap-1  py-3 px-2 text-[#33475b]">
                     <div className="flex items-center justify-center">
                         <HiShoppingCart className="text-2xl group-hover:translate-x-3 -translate-x-12 transition-transform duration-200" />
@@ -55,7 +63,7 @@ const MainBtn = () => {
                         {productState.length}
                     </p>
                 </div>
-            </Link>
+            </button>
         </div>
     )
 }
