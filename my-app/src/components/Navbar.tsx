@@ -49,7 +49,7 @@ const Navbar = () => {
                     ))}
                     {session?.user && 
                         <button 
-                            onClick={() => signOut()}
+                            onClick={()=> signOut({ callbackUrl: "/" })}
                             className="flex hover:font-medium w-20 h-6 justify-center items-center px-12 text-gray-500 
                             hover:underline underline-offset-4 decoration-[1px] hover:text-red-600 md:border-r-[2px] 
                             border-r-gray-300 duration-200 last:border-r-0"
