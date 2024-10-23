@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const SucessPage = ({ searchParams }: any) => {
+const SuccessPage = ({ searchParams }: any) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const SucessPage = ({ searchParams }: any) => {
   );
 };
 
-export default SucessPage;
+export default SuccessPage;
