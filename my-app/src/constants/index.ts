@@ -11,8 +11,4 @@ export const navLinks = [
         title: "Cart",
         href: "/cart"
     },
-    {
-        title: "Studio",
-        href: "/studio"
-    },
 ]

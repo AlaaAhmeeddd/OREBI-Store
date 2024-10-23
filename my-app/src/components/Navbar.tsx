@@ -15,7 +15,6 @@ import SearchMenu from "./SearchMenu"
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("")
-    console.log(searchQuery)
     const pathName = usePathname()
     const isSmallScreen = useMediaQuery('(max-width: 400px)');
     const {data: session} = useSession()
