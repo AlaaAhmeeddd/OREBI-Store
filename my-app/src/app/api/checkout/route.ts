@@ -4,13 +4,14 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe"
 
 export const POST = async (request: NextRequest) => {
-
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+    
     try {
-        const reqBody = await request.json()
-        const {items, email} = await reqBody;
+        const reqBody = await request.json();
+        const { items, email } = reqBody;
 
-        const updatedItems = await items.map((item: ProductProps) => ({
+        // Prepare items for Stripe
+        const updatedItems = items.map((item: ProductProps) => ({
             quantity: item.quantity,
             price_data: {
                 currency: "usd",
@@ -23,27 +24,24 @@ export const POST = async (request: NextRequest) => {
             },
         }));
 
+        // Create Stripe Checkout Session
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             line_items: updatedItems,
             mode: "payment",
-            success_url:
-                `${process.env.NEXTAUTH_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${process.env.NEXTAUTH_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.NEXTAUTH_URL}/cancel`,
             metadata: {
                 email,
             },
         });
         
-        return NextResponse.json({
-            message: "Connection is alive",
-            success: true,
-            id: session.id,
-        });
+        return NextResponse.json({ id: session.id, success: true });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-        return NextResponse.json({error: error?.message}, {status: 500})
+    } catch (error) {
+        console.error("Checkout error:", error); // Log the error for debugging
+
+        // Send a JSON response with error details
+        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
-    
-}
+};
