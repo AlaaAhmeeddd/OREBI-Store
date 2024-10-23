@@ -5,18 +5,24 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSearchParams } from 'next/navigation';
+
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const SuccessPage = ({ searchParams }: any) => {
-  const dispatch = useDispatch();
+const SuccessPage = () => {
+  const searchParams = useSearchParams();
+  const session_id = searchParams.get('session_id');
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!searchParams?.session_id) {
+    console.log("Session ID:", session_id);
+
+    if (!session_id) {
       redirect("/");
     } else {
       dispatch(resetQuantity());
     }
-  }, [dispatch, searchParams]);
+  }, [dispatch, session_id]);
   
   return (
     <Container className="flex items-center justify-center py-20">
