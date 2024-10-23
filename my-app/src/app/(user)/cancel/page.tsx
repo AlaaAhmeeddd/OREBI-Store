@@ -2,7 +2,7 @@ import Container from '@/components/Container'
 import Link from 'next/link'
 import React from 'react'
 
-const cancelPage = () => {
+const CancelPage = () => {
     return (
         <Container className="flex items-center justify-center py-20">
             <div className="min-h-[400px] flex flex-col items-center justify-center gap-y-5">
@@ -21,4 +21,4 @@ const cancelPage = () => {
     )
 }
 
-export default cancelPage
+export default CancelPage
